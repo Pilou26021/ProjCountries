@@ -29,6 +29,7 @@ Ce projet consiste à développer une WebApp monopage permettant d'afficher, rec
 │── /test
 │   ├── test.html
 │   ├── test.js
+│   ├── jquery-3.*.min.js
 ```
 
 ## Instructions
