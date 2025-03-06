@@ -134,7 +134,6 @@ class Country {
                 res += ', ';
             }
         }
-
         res += ')';
         return res;
     }
