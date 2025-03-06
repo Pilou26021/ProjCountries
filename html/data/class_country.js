@@ -117,7 +117,11 @@ class Country {
     }
 
     alpha3CodeToName(alpha3Code) {
-    
+        for (let i = 0; i < countries.length; i++) {
+            if (countries[i].alpha3Code === alpha3Code) {
+                return countries[i].translations.fr;
+            }
+        }
     }
 
     toString() {
@@ -140,7 +144,7 @@ class Country {
 
 
 // Example usage:
-const countries = [
+const countriestest = [
     {
        "name": "Afghanistan",
        "topLevelDomain": [
@@ -234,6 +238,6 @@ const countries = [
     }];
 
 //instancier un objet Country
-const country = new Country(countries[0].alpha3Code, countries[0].name, countries[0].capital, countries[0].subregion, countries[0].population, countries[0].area, countries[0].borders, countries[0].demonym, countries[0].currencies, countries[0].languages, countries[0].topLevelDomain, countries[0].flags.svg, countries[0].translations);
+const countrytest = new Country(countriestest[0].alpha3Code, countriestest[0].name, countriestest[0].capital, countriestest[0].subregion, countriestest[0].population, countriestest[0].area, countriestest[0].borders, countriestest[0].demonym, countriestest[0].currencies, countriestest[0].languages, countriestest[0].topLevelDomain, countriestest[0].flags.svg, countriestest[0].translations);
 
-console.log(country.toString()); // Output: AFG, Afghanistan, Kabul, Southern Asia, 40,218,234 hab, (IRN, PAK, TKM, UZB, TJK, CHN)
+console.log(countrytest.toString()); // Output: AFG, Afghanistan, Kabul, Southern Asia, 40,218,234 hab, (IRN, PAK, TKM, UZB, TJK, CHN)
