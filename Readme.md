@@ -13,7 +13,7 @@ Ce projet consiste à développer une WebApp monopage permettant d'afficher, rec
 
 ## Technologies utilisées
 
-- **JavaScript (ES6+)**
+- **JavaScript**
 - **jQuery 3.x** (sans CDN)
 - **CSS / SASS** (sans framework)
 
