@@ -125,6 +125,28 @@ class Country {
         this.flag = flag;
     }
 
+    getPopDensity() {
+        return this.population / this.area;
+    }
+
+    getBorders() {
+        return this.borders.map(borderCode => {
+            return Country.allCountries.find(country => country.alpha3Code === borderCode);
+        });
+    }
+
+    getCurrencies() {
+        return this.currencies.map(currency => {
+            return currency.name;
+        });
+    }
+
+    getLanguages() {
+        return this.languages.map(language => {
+            return language.name;
+        });
+    }
+
     alpha3CodeToName(alpha3Code) {
         for (let i = 0; i < countries.length; i++) {
             if (countries[i].alpha3Code === alpha3Code) {
