@@ -1,4 +1,6 @@
 class Country {
+    static allCountries = [];
+
     constructor(alpha3Code, name, capital, continent, population, area, borders, demonym, currencies, languages, topLevelDomains, flag, translations) {
         this.alpha3Code = alpha3Code;
         this.name = name; // Depuis la "translations": fr
@@ -14,6 +16,13 @@ class Country {
         this.flag = flag; // URL du drapeau en SVG
 
         this.translations = translations //tableau de traductions du nom
+    }
+
+    static fillCountries(countries) {
+        for (let i = 0; i < countries.length; i++) {
+            const country = new Country(countries[i].alpha3Code, countries[i].name, countries[i].capital, countries[i].continent, countries[i].population, countries[i].area, countries[i].borders, countries[i].demonym, countries[i].currencies, countries[i].languages, countries[i].topLevelDomain, countries[i].flags.svg, countries[i].translations);
+            Country.allCountries.push(country);
+        }
     }
 
     get getNameFrFromTranslation() {
