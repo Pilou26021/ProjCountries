@@ -14,8 +14,7 @@ class Country {
         this.languages       = languages;       // Array de codes iso639_2
         this.topLevelDomains = topLevelDomains; // Array des TLDs
         this.flag            = flag;            // URL du drapeau en SVG
-
-        this.translations = translations //tableau de traductions du nom
+        this.translations    = translations;    //tableau de traductions du nom
     }
 
     static fillCountries(countries) {
