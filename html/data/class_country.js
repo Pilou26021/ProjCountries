@@ -2,18 +2,18 @@ class Country {
     static allCountries = [];
 
     constructor(alpha3Code, name, capital, continent, population, area, borders, demonym, currencies, languages, topLevelDomains, flag, translations) {
-        this.alpha3Code = alpha3Code;
-        this.name = name; // Depuis la "translations": fr
-        this.capital = capital; // Capitale
-        this.continent = continent; // Continent
-        this.population = population; // Population
-        this.area = area; // Superficie
-        this.borders = borders; // Array de alpha3Codes
-        this.demonym = demonym; // Nom des habitants
-        this.currencies = currencies; // Array des codes de devises
-        this.languages = languages; // Array de codes iso639_2
+        this.alpha3Code      = alpha3Code;
+        this.name            = name;            // Depuis la "translations": fr
+        this.capital         = capital;         // Capitale
+        this.continent       = continent;       // Continent
+        this.population      = population;      // Population
+        this.area            = area;            // Superficie
+        this.borders         = borders;         // Array de alpha3Codes
+        this.demonym         = demonym;         // Nom des habitants
+        this.currencies      = currencies;      // Array des codes de devises
+        this.languages       = languages;       // Array de codes iso639_2
         this.topLevelDomains = topLevelDomains; // Array des TLDs
-        this.flag = flag; // URL du drapeau en SVG
+        this.flag            = flag;            // URL du drapeau en SVG
 
         this.translations = translations //tableau de traductions du nom
     }
