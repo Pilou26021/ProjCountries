@@ -1,6 +1,6 @@
 //Q1 - outsideTheContinent() : Tableau JS des pays (objets Country) dont au moins un pays frontalier n’est pas dans le même continent.
 function outsideTheContinent() {
-    let countries = Country.allCountries;
+    let countries = Country.all_countries;
     let countriesOutside = [];
     for (let i = 0; i < countries.length; i++) {
         let country = countries[i];
@@ -22,7 +22,7 @@ function outsideTheContinent() {
 
 //Q2 - moreNeighbors() : Tableau des pays ayant le plus grand nombre de voisins. Achez aussi les voisins.
 function moreNeighbors() {
-    let countries = Country.allCountries;
+    let countries = Country.all_countries;
     let countriesMoreNeighbors = [];
     let max = 0;
     for (let i = 0; i < countries.length; i++) {
@@ -43,7 +43,7 @@ function moreNeighbors() {
 
 //Q3 - neighborless() : Tableau des pays n’ayant aucun voisin.
 function neighborless() {
-    let countries = Country.allCountries;
+    let countries = Country.all_countries;
     let countriesNeighborless = [];
     for (let i = 0; i < countries.length; i++) {
         let country = countries[i];
@@ -58,8 +58,8 @@ function neighborless() {
 
 //Q4 - moreLanguages() : Tableau des pays parlant le plus de langues. Achez aussi les langues (objets Language).
 function moreLanguages() {
-    let countries = Country.allCountries;
-    let languages = Language.allLanguages;
+    let countries = Country.all_countries;
+    let languages = Language.all_languages;
     let countriesMoreLanguages = [];
     let max = 0;
     for (let i = 0; i < countries.length; i++) {
