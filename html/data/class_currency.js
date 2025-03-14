@@ -30,15 +30,17 @@ class Currency {
     setSymbol(symbol) {
         this.symbol = symbol;
     }
-
     static fill_currencies() {
         for (let i = 0; i < countries.length; i++) {
-            for (let j = 0; j < countries[i].currencies.length; j++) {
-                const currency = new Currency(countries[i].currencies[j].code, countries[i].currencies[j].name, countries[i].currencies[j].symbol);
-                Currency.all_currencies.push(currency);
+            if (countries[i].currencies) {
+                for (let j = 0; j < countries[i].currencies.length; j++) {
+                    const currency = countries[i].currencies[j];
+                    const newCurrency = new Currency(currency.code, currency.name, currency.symbol);
+                    Currency.all_currencies[currency.code] = newCurrency;
+                }
             }
         }
-    }
+    }    
 }
 
 Currency.fill_currencies();
