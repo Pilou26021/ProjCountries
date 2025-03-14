@@ -14,7 +14,7 @@ function outsideTheContinent() {
             let border = borders[j];
             let countryBorder = Country.getCountryByAlpha3Code(border);
             if (countryBorder.continent !== continent) {
-                countriesOutside.push(country.name);
+                countriesOutside.push(country);
                 break;
             }
         }
@@ -22,7 +22,8 @@ function outsideTheContinent() {
     return countriesOutside;
 }
 
-console.table(outsideTheContinent());
+// console.log("Test Q1");
+// console.table(outsideTheContinent());
 
 //Q2 - moreNeighbors() : Tableau des pays ayant le plus grand nombre de voisins. Achez aussi les voisins.
 function moreNeighbors() {
@@ -32,6 +33,9 @@ function moreNeighbors() {
     for (let i = 0; i < countries.length; i++) {
         let country = countries[i];
         let borders = country.borders;
+        if (!borders || borders.length === 0) {
+            continue;
+        }
         if (borders.length > max) {
             max = borders.length;
             countriesMoreNeighbors = [];
@@ -43,7 +47,13 @@ function moreNeighbors() {
     return countriesMoreNeighbors;
 }
 
-//moreNeighbors();
+// console.log("Test Q2 : ");
+// console.table(moreNeighbors());
+// for (let i = 0; i < moreNeighbors().length; i++) {
+//     for (let j = 0; j < moreNeighbors()[i].borders.length; j++) {
+//         console.log(Country.getCountryByAlpha3Code(moreNeighbors()[i].borders[j]).name);
+//     }
+// }
 
 //Q3 - neighborless() : Tableau des pays n’ayant aucun voisin.
 function neighborless() {
@@ -51,14 +61,18 @@ function neighborless() {
     let countriesNeighborless = [];
     for (let i = 0; i < countries.length; i++) {
         let country = countries[i];
-        if (country.borders.length === 0) {
+        let borders = country.borders;
+        if (!borders || country.borders.length === 0) {
             countriesNeighborless.push(country);
         }
     }
     return countriesNeighborless;
 }
 
-//neighborless();
+
+// console.log("Test Q3");
+// console.table(neighborless());
+
 
 //Q4 - moreLanguages() : Tableau des pays parlant le plus de langues. Achez aussi les langues (objets Language).
 function moreLanguages() {
@@ -80,4 +94,5 @@ function moreLanguages() {
     return countriesMoreLanguages;
 }
 
-//moreLanguages();
+console.log("Test Q4");
+console.table(moreLanguages());
