@@ -70,7 +70,7 @@ function neighborless() {
 }
 
 
-// console.log("Test Q3");
+// console.log("Test Q3 : ");
 // console.table(neighborless());
 
 
@@ -94,5 +94,10 @@ function moreLanguages() {
     return countriesMoreLanguages;
 }
 
-console.log("Test Q4");
+console.log("Test Q4 : ");
 console.table(moreLanguages());
+for (let i = 0; i < moreLanguages().length; i++) {
+    for (let j = 0; j < moreLanguages()[i].languages.length; j++) {
+        console.log(Language.all_languages[moreLanguages()[i].languages[j].iso639_2].name);
+    }
+}
