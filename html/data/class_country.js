@@ -25,7 +25,7 @@ class Country {
     }
 
     static getCountryByAlpha3Code(alpha3Code) {
-        return Country.allCountries.find(country => country.alpha3Code === alpha3Code);
+        return Country.all_countries.find(country => country.alpha3Code === alpha3Code);
     }
 
     get getNameFrFromTranslation() {
@@ -134,7 +134,7 @@ class Country {
 
     getBorders() {
         return this.borders.map(borderCode => {
-            return Country.allCountries.find(country => country.alpha3Code === borderCode);
+            return Country.all_countries.find(country => country.alpha3Code === borderCode);
         });
     }
 

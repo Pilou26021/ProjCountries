@@ -25,19 +25,13 @@ class Language {
     }
 
     static fill_languages() {
-        for (let i = 0; i < languages.length; i++) {
-            const language = new Language(languages[i].name, languages[i].iso639_2);
-            Language.all_languages[languages[i].iso639_2] = language;
-        }
-    }
-
-    static fillCountries(countries) {
         for (let i = 0; i < countries.length; i++) {
-            const country = new Country(countries[i].alpha3Code, countries[i].name, countries[i].capital, countries[i].continent, countries[i].population, countries[i].area, countries[i].borders, countries[i].demonym, countries[i].currencies, countries[i].languages, countries[i].topLevelDomain, countries[i].flags.svg, countries[i].translations);
-            Country.allCountries.push(country);
+            for (let j = 0; j < countries[i].languages.length; j++) {
+                const language = new Language(countries[i].languages[j].name, countries[i].languages[j].iso639_2);
+                Language.all_languages[countries[i].languages[j].iso639_2] = language;
+            }
         }
     }
-
 }
 
 Language.fill_languages();
