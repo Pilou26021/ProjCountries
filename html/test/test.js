@@ -1,47 +1,43 @@
 function withCommonLanguage() {
-    let countries = [];
-    let languages = [];
-    let neighbors = [];
-    for (let i = 0; i < countries.length; i++) {
-        for (let j = 0; j < countries[i].borders.length; j++) {
-            if (countries[i].languages.includes(countries[i].borders[j].languages)) {
-                neighbors.push(countries[i].borders[j]);
-                languages.push(countries[i].borders[j].languages);
-            }
-        }
-    }
-    console.log(neighbors, languages);
+    let liste_coutries = Object.values(Country.all_countries);
+    let resultat = liste_coutries.filter(country => country.languages.length > 1);
+    console.table(resultat);
 }
 
 function withoutCommonCurrency() {
-    let countries = [];
-    let neighbors = [];
-    for (let i = 0; i < countries.length; i++) {
-        let commonCurrency = false;
-        for (let j = 0; j < countries[i].borders.length; j++) {
-            if (countries[i].currencies.includes(countries[i].borders[j].currencies)) {
-                commonCurrency = true;
+    let liste_countries = Object.values(Country.all_countries);
+    let resultat = [];
+
+    for (let i = 0; i < liste_countries.length; i++) {
+        let pays = liste_countries[i];   
+        let monnaies = pays.currencies || [];
+        let voisins = pays.getBorders();
+        let monnaies_voisins = [];
+
+        if (voisins) {
+            for (let j = 0; j < voisins.length; j++) {
+                monnaies_voisins = monnaies_voisins.concat(voisins[j].currencies || []);
             }
         }
-        if (!commonCurrency) {
-            neighbors.push(countries[i]);
+
+        let intersection = monnaies.filter(monnaie => monnaies_voisins.includes(monnaie));
+        if (intersection.length === 0) {
+            resultat.push(pays);
         }
     }
-    console.log(neighbors);
+    console.table(resultat);
+    console.log(resultat.length);
 }
 
+
 function sortingDecreasingDensity() {
-    let countries = [];
-    return countries.sort((a, b) => b.population / b.area - a.population / a.area);
+    let liste_coutries = Object.values(Country.all_countries);
+    let resultat = liste_coutries.sort((a, b) => b.getPopDensity() - a.getPopDensity());
+    console.table(resultat);
 }
 
 function moreTopLevelDomains() {
-    let countries = [];
-    let domains = [];
-    for (let i = 0; i < countries.length; i++) {
-        if (countries[i].topLevelDomain.length > 1) {
-            domains.push(countries[i]);
-        }
-    }
-    console.log(domains);
+    let liste_coutries = Object.values(Country.all_countries);
+    let resultat = liste_coutries.sort((a, b) => b.topLevelDomains.length - a.topLevelDomains.length);
+    console.table(resultat);
 }
