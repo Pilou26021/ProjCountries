@@ -1,5 +1,5 @@
 class Language {
-    static allLanguages = {};
+    static all_languages = {};
 
     constructor(name, iso639_2) {
         this.name = name;
@@ -27,7 +27,7 @@ class Language {
     static fill_languages() {
         for (let i = 0; i < languages.length; i++) {
             const language = new Language(languages[i].name, languages[i].iso639_2);
-            Language.allLanguages[languages[i].iso639_2] = language;
+            Language.all_languages[languages[i].iso639_2] = language;
         }
     }
 

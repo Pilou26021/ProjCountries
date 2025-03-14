@@ -1,5 +1,5 @@
 class Currency {
-    static allCurrencies = [];    
+    static all_currencies = [];    
 
     constructor(code, name, symbol) {
         this.code = code;
