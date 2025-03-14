@@ -31,16 +31,12 @@ class Currency {
         this.symbol = symbol;
     }
 
-    static fillCurrencies() {
-        countries.forEach(country => {
-            if (country.currencies) {
-                country.currencies.forEach(currency => {
-                    const newCurrency = new Currency(currency.code, currency.name, currency.symbol);
-                    Currency.allCurrencies[currency.code] = newCurrency;
-                });
-            }
-        });
+    static fill_currencies() {
+        for (let i = 0; i < currencies.length; i++) {
+            const currency = new Currency(currencies[i].code, currencies[i].name, currencies[i].symbol);
+            Currency.all_currencies.push(currency);
+        }
     }
 }
 
-Currency.fillCurrencies();
+Currency.fill_currencies();

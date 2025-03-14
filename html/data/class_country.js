@@ -17,10 +17,10 @@ class Country {
         this.translations    = translations;    //tableau de traductions du nom
     }
 
-    static fillCountries(countries) {
+    static fill_countries(countries) {
         for (let i = 0; i < countries.length; i++) {
             const country = new Country(countries[i].alpha3Code, countries[i].name, countries[i].capital, countries[i].continent, countries[i].population, countries[i].area, countries[i].borders, countries[i].demonym, countries[i].currencies, countries[i].languages, countries[i].topLevelDomain, countries[i].flags.svg, countries[i].translations);
-            Country.allCountries.push(country);
+            Country.all_countries.push(country);
         }
     }
 
@@ -170,4 +170,4 @@ class Country {
 
 }
 
-Country.fillCountries(countries);
+Country.fill_countries(countries);

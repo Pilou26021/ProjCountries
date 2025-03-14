@@ -24,22 +24,20 @@ class Language {
         return this.name + ' (' + this.iso639_2 + ')';
     }
 
-    static fillLanguages() {
-        countries.forEach(data => {
-            data.languages.forEach(language => {
-                let langue = new Language(
-                    language.iso639_2,
-                    language.name
-                );
-                Language.allLanguages[language.iso639_2] = langue;
-            });
-        });
+    static fill_languages() {
+        for (let i = 0; i < languages.length; i++) {
+            const language = new Language(languages[i].name, languages[i].iso639_2);
+            Language.allLanguages[languages[i].iso639_2] = language;
+        }
+    }
+
+    static fillCountries(countries) {
+        for (let i = 0; i < countries.length; i++) {
+            const country = new Country(countries[i].alpha3Code, countries[i].name, countries[i].capital, countries[i].continent, countries[i].population, countries[i].area, countries[i].borders, countries[i].demonym, countries[i].currencies, countries[i].languages, countries[i].topLevelDomain, countries[i].flags.svg, countries[i].translations);
+            Country.allCountries.push(country);
+        }
     }
 
 }
 
-Language.fillLanguages();
-
-// Example usage:
-// const english = new Language('English', 'English', 'en', 'eng');
-// console.log(english.getName()); // Output: English
+Language.fill_languages();
