@@ -173,7 +173,7 @@ class Country {
 
 
 // Example usage:
-const countriestest = [
+const countries = [
     {
        "name": "Afghanistan",
        "topLevelDomain": [
@@ -265,8 +265,3 @@ const countriestest = [
        "cioc": "AFG",
        "independent": true
     }];
-
-//instancier un objet Country
-const countrytest = new Country(countriestest[0].alpha3Code, countriestest[0].name, countriestest[0].capital, countriestest[0].subregion, countriestest[0].population, countriestest[0].area, countriestest[0].borders, countriestest[0].demonym, countriestest[0].currencies, countriestest[0].languages, countriestest[0].topLevelDomain, countriestest[0].flags.svg, countriestest[0].translations);
-
-console.log(countrytest.toString()); // Output: AFG, Afghanistan, Kabul, Southern Asia, 40,218,234 hab, (IRN, PAK, TKM, UZB, TJK, CHN)
