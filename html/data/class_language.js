@@ -31,7 +31,7 @@ class Language {
                     language.iso639_2,
                     language.name
                 );
-                Language.all_languages[language.iso639_2] = langue;
+                Language.allLanguages[language.iso639_2] = langue;
             });
         });
     }

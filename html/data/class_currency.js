@@ -36,7 +36,7 @@ class Currency {
             if (country.currencies) {
                 country.currencies.forEach(currency => {
                     const newCurrency = new Currency(currency.code, currency.name, currency.symbol);
-                    Currency.all_currencies[currency.code] = newCurrency;
+                    Currency.allCurrencies[currency.code] = newCurrency;
                 });
             }
         });
