@@ -24,6 +24,10 @@ class Country {
         }
     }
 
+    static getCountryByAlpha3Code(alpha3Code) {
+        return Country.all_countries.find(country => country.alpha3Code === alpha3Code);
+    }
+
     getPopDensity() {
         return this.population / this.area;
     }
