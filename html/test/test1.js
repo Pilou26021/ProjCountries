@@ -2,15 +2,19 @@
 function outsideTheContinent() {
     let countries = Country.all_countries;
     let countriesOutside = [];
+
     for (let i = 0; i < countries.length; i++) {
         let country = countries[i];
         let borders = country.getBorders();
         let continent = country.continent;
+        if (!borders || borders.length === 0) {
+            continue;
+        }
         for (let j = 0; j < borders.length; j++) {
             let border = borders[j];
             let countryBorder = Country.getCountryByAlpha3Code(border);
             if (countryBorder.continent !== continent) {
-                countriesOutside.push(country);
+                countriesOutside.push(country.name);
                 break;
             }
         }
@@ -18,7 +22,7 @@ function outsideTheContinent() {
     return countriesOutside;
 }
 
-//outsideTheContinent();
+console.table(outsideTheContinent());
 
 //Q2 - moreNeighbors() : Tableau des pays ayant le plus grand nombre de voisins. Achez aussi les voisins.
 function moreNeighbors() {

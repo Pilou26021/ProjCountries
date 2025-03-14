@@ -19,7 +19,7 @@ class Country {
 
     static fill_countries(countries) {
         for (let i = 0; i < countries.length; i++) {
-            const country = new Country(countries[i].alpha3Code, countries[i].name, countries[i].capital, countries[i].continent, countries[i].population, countries[i].area, countries[i].borders, countries[i].demonym, countries[i].currencies, countries[i].languages, countries[i].topLevelDomain, countries[i].flags.svg, countries[i].translations);
+            const country = new Country(countries[i].alpha3Code, countries[i].name, countries[i].capital, countries[i].region, countries[i].population, countries[i].area, countries[i].borders, countries[i].demonym, countries[i].currencies, countries[i].languages, countries[i].topLevelDomain, countries[i].flags.svg, countries[i].translations);
             Country.all_countries.push(country);
         }
     }
@@ -80,14 +80,6 @@ class Country {
         this.area = area;
     }
 
-    get getBorders() {
-        return this.borders;
-    }
-
-    set setBorders(borders) {
-        this.borders = borders;
-    }
-
     get getDemonym() {
         return this.demonym;
     }
@@ -133,9 +125,7 @@ class Country {
     }
 
     getBorders() {
-        return this.borders.map(borderCode => {
-            return Country.all_countries.find(country => country.alpha3Code === borderCode);
-        });
+        return this.borders;
     }
 
     getCurrencies() {
