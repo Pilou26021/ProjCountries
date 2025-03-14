@@ -1,5 +1,5 @@
 class Country {
-    static allCountries = [];
+    static all_countries = [];
 
     constructor(alpha3Code, name, capital, continent, population, area, borders, demonym, currencies, languages, topLevelDomains, flag, translations) {
         this.alpha3Code      = alpha3Code;
