@@ -14,7 +14,7 @@
 
 
     <script>
-        var country = new Country(countries[0].alpha3Code, countries[0].name, countries[0].capital, countries[0].subregion, countries[0].population, countries[0].area, countries[0].borders, countries[0].demonym, countries[0].currencies, countries[0].languages, countries[0].topLevelDomain, countries[0].flags.svg, countries[0].translations);
+        var country = Country.getCountryByAlpha3Code('AFG');
         console.log(country.toString()); // Output: AFG, Afghanistan, Kabul, Southern Asia, 40,218,234 hab, (Iran, Pakistan, Turkménistan, Ouzbékistan, Tadjikistan, Chine)
     </script>
 
