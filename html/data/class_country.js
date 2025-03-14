@@ -173,3 +173,5 @@ class Country {
     }
 
 }
+
+Country.fillCountries(countries);
