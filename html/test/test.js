@@ -1,6 +1,31 @@
 function withCommonLanguage() {
-    let liste_coutries = Object.values(Country.all_countries);
-    let resultat = liste_coutries.filter(country => country.languages.length > 1);
+    let liste_countries = Object.values(Country.all_countries);
+    let resultat = [];
+
+    for (let i = 0; i < liste_countries.length; i++) {
+        let pays = liste_countries[i];
+        let langues = pays.languages || [];
+        let voisins = pays.getBorders();
+        let langues_voisins = [];
+
+        if (voisins) {
+            for (let j = 0; j < voisins.length; j++) {
+                let voisin = Country.getCountryByAlpha3Code(voisins[j]);
+                if (voisin.languages) {
+                    langues_voisins = langues_voisins.concat(voisin.languages);
+                }
+            }
+        }
+
+        let une_en_commun = langues.some(langue => 
+            langues_voisins.some(langue_voisin => langue_voisin.iso639_1 === langue.iso639_1)
+        );
+
+        if (une_en_commun) {
+            resultat.push(pays);
+        }
+    }
+
     console.table(resultat);
 }
 
@@ -9,26 +34,31 @@ function withoutCommonCurrency() {
     let resultat = [];
 
     for (let i = 0; i < liste_countries.length; i++) {
-        let pays = liste_countries[i];   
+        let pays = liste_countries[i];
         let monnaies = pays.currencies || [];
         let voisins = pays.getBorders();
         let monnaies_voisins = [];
 
         if (voisins) {
             for (let j = 0; j < voisins.length; j++) {
-                monnaies_voisins = monnaies_voisins.concat(voisins[j].currencies || []);
+                let voisin = Country.getCountryByAlpha3Code(voisins[j]);
+                if (voisin.currencies) {
+                    monnaies_voisins = monnaies_voisins.concat(voisin.currencies);
+                }
             }
         }
 
-        let intersection = monnaies.filter(monnaie => monnaies_voisins.includes(monnaie));
-        if (intersection.length === 0) {
+        let aucune_en_commun = monnaies.every(monnaie => 
+            !monnaies_voisins.some(monnaie_voisin => monnaie_voisin.code === monnaie.code)
+        );
+
+        if (aucune_en_commun) {
             resultat.push(pays);
         }
     }
-    console.table(resultat);
-    console.log(resultat.length);
-}
 
+    console.table(resultat);
+}
 
 function sortingDecreasingDensity() {
     let liste_coutries = Object.values(Country.all_countries);
