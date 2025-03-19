@@ -94,6 +94,7 @@ function moreLanguages() {
     return countriesMoreLanguages;
 }
 
+/*
 console.log("Test Q4 : ");
 console.table(moreLanguages());
 for (let i = 0; i < moreLanguages().length; i++) {
@@ -101,6 +102,7 @@ for (let i = 0; i < moreLanguages().length; i++) {
         console.log(Language.all_languages[moreLanguages()[i].languages[j].iso639_2].name);
     }
 }
+*/
 
 function withCommonLanguage() {
     let liste_countries = Object.values(Country.all_countries);
@@ -126,6 +128,7 @@ function withCommonLanguage() {
         );
 
         if (une_en_commun) {
+            pays.langue_voisins = langues_voisins;
             resultat.push(pays);
         }
     }
