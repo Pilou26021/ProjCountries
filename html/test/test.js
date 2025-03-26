@@ -133,7 +133,7 @@ function withCommonLanguage() {
         }
     }
 
-    console.table(resultat);
+    return resultat;
 }
 
 function withoutCommonCurrency() {
@@ -164,17 +164,17 @@ function withoutCommonCurrency() {
         }
     }
 
-    console.table(resultat);
+    return resultat;
 }
 
 function sortingDecreasingDensity() {
     let liste_coutries = Object.values(Country.all_countries);
     let resultat = liste_coutries.sort((a, b) => b.getPopDensity() - a.getPopDensity());
-    console.table(resultat);
+    return resultat;
 }
 
 function moreTopLevelDomains() {
     let liste_coutries = Object.values(Country.all_countries);
     let resultat = liste_coutries.sort((a, b) => b.topLevelDomains.length - a.topLevelDomains.length);
-    console.table(resultat);
+    return resultat;
 }

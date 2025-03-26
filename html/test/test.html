@@ -5,21 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
 
-    <script src="./jquery-3.7.1.min.js"></script>
     <script src="../data/countries.js"></script>
     <script src="../data/class_country.js"></script>
     <script src="../data/class_language.js"></script>
     <script src="../data/class_currency.js"></script>
     <script src="./test.js"></script>
 
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    <script>
-        // var country = Country.getCountryByAlpha3Code('AFG');
-        // console.log(country.toString()); // Output: AFG, Afghanistan, Kabul, Southern Asia, 40,218,234 hab, (Iran, Pakistan, Turkménistan, Ouzbékistan, Tadjikistan, Chine)
-    </script>
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-
+    <div class="container">
+        <table>
+            <tr>
+            <th>Description</th>
+            <th>Action</th>
+            </tr>
+            <tr>
+            <td>Pays avec au moins un pays voisin qui n'est pas sur le même continent</td>
+            <td><button onClick="console.table(outsideTheContinent())">CLIQUEZ</button></td>
+            </tr>
+            <tr>
+            <td>Pays avec le plus grand nombre de voisins</td>
+            <td><button onClick="console.table(moreNeighbors())">CLIQUEZ</button></td>
+            </tr>
+            <tr>
+            <td>Pays sans voisins</td>
+            <td><button onClick="console.table(neighborless())">CLIQUEZ</button></td>
+            </tr>
+            <tr>
+            <td>Pays parlant le plus de langues</td>
+            <td><button onClick="console.table(moreLanguages())">CLIQUEZ</button></td>
+            </tr>
+            <tr>
+            <td>Pays avec au moins un voisin parlant une de leurs langues</td>
+            <td><button onClick="console.table(withCommonLanguage())">CLIQUEZ</button></td>
+            </tr>
+            <tr>
+            <td>Pays sans voisins partageant au moins une de leurs devises</td>
+            <td><button onClick="console.table(withoutCommonCurrency())">CLIQUEZ</button></td>
+            </tr>
+            <tr>
+            <td>Pays et leur densité de population par ordre décroissant</td>
+            <td><button onClick="console.table(sortingDecreasingDensity())">CLIQUEZ</button></td>
+            </tr>
+            <tr>
+            <td>Pays avec le plus de TLDs par ordre décroissant</td>
+            <td><button onClick="console.table(moreTopLevelDomains())">CLIQUEZ</button></td>
+            </tr>
+        </table>
+    </div>
 </body>
-</html>
