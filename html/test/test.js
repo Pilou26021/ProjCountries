@@ -113,23 +113,31 @@ function withCommonLanguage() {
         let langues = pays.languages || [];
         let voisins = pays.getBorders();
         let langues_voisins = [];
+        let pays_voisins = [];
 
         if (voisins) {
             for (let j = 0; j < voisins.length; j++) {
                 let voisin = Country.getCountryByAlpha3Code(voisins[j]);
                 if (voisin.languages) {
                     langues_voisins = langues_voisins.concat(voisin.languages);
+                    pays_voisins = pays_voisins.concat(voisin);
                 }
             }
-        }
 
-        let une_en_commun = langues.some(langue => 
-            langues_voisins.some(langue_voisin => langue_voisin.iso639_1 === langue.iso639_1)
-        );
-
-        if (une_en_commun) {
-            pays.langue_voisins = langues_voisins;
-            resultat.push(pays);
+            let une_en_commun = langues.some(langue => 
+                langues_voisins.some(langue_voisin => langue_voisin.iso639_1 === langue.iso639_1)
+            );
+    
+            if (une_en_commun) {
+                pays_voisins = pays_voisins.filter(voisin => 
+                    voisin.languages.some(langue_voisin => 
+                        langues.some(langue => langue.iso639_1 === langue_voisin.iso639_1)
+                    )
+                );
+    
+                pays.pays_voisins = pays_voisins;
+                resultat.push(pays);
+            }
         }
     }
 
