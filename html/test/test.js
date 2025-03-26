@@ -22,8 +22,11 @@ function outsideTheContinent() {
     return countriesOutside;
 }
 
-// console.log("Test Q1");
-// console.table(outsideTheContinent());
+/*
+console.log("Test Q1");
+console.table(outsideTheContinent());
+*/
+
 
 //Q2 - moreNeighbors() : Tableau des pays ayant le plus grand nombre de voisins. Achez aussi les voisins.
 function moreNeighbors() {
@@ -47,13 +50,16 @@ function moreNeighbors() {
     return countriesMoreNeighbors;
 }
 
-// console.log("Test Q2 : ");
-// console.table(moreNeighbors());
-// for (let i = 0; i < moreNeighbors().length; i++) {
-//     for (let j = 0; j < moreNeighbors()[i].borders.length; j++) {
-//         console.log(Country.getCountryByAlpha3Code(moreNeighbors()[i].borders[j]).name);
-//     }
-// }
+/*
+console.log("Test Q2 : ");
+console.table(moreNeighbors());
+for (let i = 0; i < moreNeighbors().length; i++) {
+    for (let j = 0; j < moreNeighbors()[i].borders.length; j++) {
+        console.log(Country.getCountryByAlpha3Code(moreNeighbors()[i].borders[j]).name);
+    }
+}
+*/
+
 
 //Q3 - neighborless() : Tableau des pays n’ayant aucun voisin.
 function neighborless() {
@@ -69,9 +75,10 @@ function neighborless() {
     return countriesNeighborless;
 }
 
-
-// console.log("Test Q3 : ");
-// console.table(neighborless());
+/*
+console.log("Test Q3 : ");
+console.table(neighborless());
+*/
 
 
 //Q4 - moreLanguages() : Tableau des pays parlant le plus de langues. Achez aussi les langues (objets Language).
@@ -104,6 +111,8 @@ for (let i = 0; i < moreLanguages().length; i++) {
 }
 */
 
+
+//Q5 - withCommonLanguage() : Tableau des pays ayant au moins un voisin parlant une langue en commun. Achez aussi les voisins.
 function withCommonLanguage() {
     let liste_countries = Object.values(Country.all_countries);
     let resultat = [];
@@ -144,6 +153,18 @@ function withCommonLanguage() {
     return resultat;
 }
 
+/*
+console.log("Test Q5 : ");
+console.table(withCommonLanguage());
+for (let i = 0; i < withCommonLanguage().length; i++) {
+    for (let j = 0; j < withCommonLanguage()[i].pays_voisins.length; j++) {
+        console.log(withCommonLanguage()[i].pays_voisins[j].name);
+    }
+}
+*/
+
+
+//Q6 - withoutCommonCurrency() : Tableau des pays n’ayant pas de monnaie en commun avec au moins un de ses voisins.
 function withoutCommonCurrency() {
     let liste_countries = Object.values(Country.all_countries);
     let resultat = [];
@@ -175,14 +196,33 @@ function withoutCommonCurrency() {
     return resultat;
 }
 
+/*
+console.log("Test Q6 : ");
+console.table(withoutCommonCurrency());
+*/
+
+
+//Q7 - sortingDecreasingDensity() : Tableau des pays triés par densité de population décroissante.
 function sortingDecreasingDensity() {
     let liste_coutries = Object.values(Country.all_countries);
     let resultat = liste_coutries.sort((a, b) => b.getPopDensity() - a.getPopDensity());
     return resultat;
 }
 
+/*
+console.log("Test Q7 : ");
+console.table(sortingDecreasingDensity());
+*/
+
+
+//Q8 - moreTopLevelDomains() : Tableau des pays ayant le plus grand nombre de domaines de premier niveau.
 function moreTopLevelDomains() {
     let liste_coutries = Object.values(Country.all_countries);
     let resultat = liste_coutries.sort((a, b) => b.topLevelDomains.length - a.topLevelDomains.length);
     return resultat;
 }
+
+/*
+console.log("Test Q8 : ");
+console.table(moreTopLevelDomains());
+*/
