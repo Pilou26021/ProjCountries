@@ -15,19 +15,19 @@ function renderTable() {
         <tr>
             <td>${country.name}</td>
             <td>${country.capital}</td>
-            <td>${country.continent}</td>
+            <td>${country.region}</td>
             <td>${country.population.toLocaleString()}</td>
             <td>${country.area}</td>
             <td><img src="${country.flag}" alt="Drapeau de ${country.name}"></td>
         </tr>
     `).join('');
 
-    // Update button visibility
+    // on change la visibilité des boutons 
     prevButton.style.display = currentPage > 1 ? "inline-block" : "none";
     nextButton.style.display = endIndex < all_countries.length ? "inline-block" : "none";
 }
 
-// Event listeners for buttons
+// Les events listeners pour les boutons de navigation
 prevButton.addEventListener("click", () => {
     if (currentPage > 1) {
         currentPage--;
@@ -42,5 +42,5 @@ nextButton.addEventListener("click", () => {
     }
 });
 
-// Initial render
+//render du dom
 renderTable();
