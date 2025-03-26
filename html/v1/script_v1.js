@@ -1,8 +1,8 @@
 const all_countries = countries;
 
-const tableBody = document.querySelector("#countries-table tbody");
+const $tableBody = $("#countries-table tbody");
 
-tableBody.innerHTML = all_countries.map(country => `
+$tableBody.html(all_countries.map(country => `
     <tr>
         <td>${country.name}</td>
         <td>${country.capital}</td>
@@ -11,4 +11,4 @@ tableBody.innerHTML = all_countries.map(country => `
         <td>${country.area}</td>
         <td><img src="${country.flag}" alt="Drapeau de ${country.name}"></td>
     </tr>
-`).join('');
+`).join(''));
