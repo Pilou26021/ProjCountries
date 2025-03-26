@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Pays</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .img-drapeau {
+            width: 50px;
+            cursor: pointer;
+        }
+        #details-zone {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 1000;
+        }
+        #details-close-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #flag-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        #flag-modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        #flag-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .details-header {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .close-details-button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Liste des Pays</h1>
+    <table id="countries-table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Capitale</th>
+                <th>Continent</th>
+                <th>Population</th>
+                <th>Superficie</th>
+                <th>Drapeau</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div style="text-align: center; margin: 20px;">
+        <button id="prev-button">Précédent</button>
+        <button id="next-button">Suivant</button>
+    </div>
+    <div id="details-zone">
+        <button id="details-close-button">Fermer</button>
+    </div>
+    <div id="flag-modal" style="display: flex;">
+        <button id="flag-modal-close">Fermer</button>
+        <img src="" alt="Drapeau en grand">
+    </div>
+    <script src="../data/countries.js"></script>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script src="script_v3.js"></script>
+</body>
+</html>
