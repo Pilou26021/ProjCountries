@@ -83,6 +83,13 @@ $tableBody.on("click", "tr",  function (event) {
     $detailsZone.find(".close-details-button").on("click", () => {
         $detailsZone.hide();
     });
+
+    $detailsZone.find(".img-drapeau-details").on("click", function () {
+        $flagModalImg.attr("src", $(this).attr("src"));
+        $flagModalImg.attr("alt", $(this).attr("alt"));
+        $flagModal.show();
+    }
+    );
     
     $detailsZone.show();
 });
