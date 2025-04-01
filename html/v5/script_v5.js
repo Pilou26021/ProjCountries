@@ -223,8 +223,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 sortOrder = (sortColumn === column) ? -sortOrder : 1;
                 sortColumn = column;
 
-                table.querySelectorAll("th").forEach(header => header.classList.remove("sorted"));
+                table.querySelectorAll("th").forEach(header => {
+                    header.classList.remove("sorted");
+                    header.querySelector(".sort-indicator")?.remove();
+                });
+
                 th.classList.add("sorted");
+                const sortIndicator = document.createElement("span");
+                sortIndicator.classList.add("sort-indicator");
+                sortIndicator.textContent = sortOrder === 1 ? "↗" : "↘";
+                th.appendChild(sortIndicator);
 
                 // Trier le tableau filteredCountries
                 filteredCountries.sort((a, b) => {
