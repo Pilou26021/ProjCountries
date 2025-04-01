@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liste des Pays</title>
     <style>
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
         table {
             width: 80%;
             border-collapse: collapse;
@@ -63,6 +68,7 @@
             max-width: 90%;
             max-height: 90%;
         }
+        
         #flag-modal-close {
             position: absolute;
             top: 20px;
@@ -137,9 +143,9 @@
 <body>
     <h1 style="text-align: center;">Liste des Pays</h1>
     <div style="text-align: center; margin: 20px;">
-        <button id="prev-button">Précédent</button>
-        <p class="current-page" style="display: inline; margin: 0 10px;"></p>
-        <button id="next-button">Suivant</button>
+        <button class="prev-button">Précédent</button>
+        <p class="current-page"></p>
+        <button class="next-button">Suivant</button>
     </div>
     <table id="countries-table">
         <thead>
@@ -156,9 +162,9 @@
         </tbody>
     </table>
     <div style="text-align: center; margin: 20px;">
-        <button id="prev-button">Précédent</button>
-        <p class="current-page" style="display: inline; margin: 0 10px;"></p>
-        <button id="next-button">Suivant</button>
+        <button class="prev-button">Précédent</button>
+        <p class="current-page"></p>
+        <button class="next-button">Suivant</button>
     </div>
     <div id="details-zone">
         <button id="details-close-button">Fermer</button>
