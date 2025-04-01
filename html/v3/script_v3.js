@@ -20,7 +20,7 @@ function renderTable() {
     const countriesToDisplay = all_countries.slice(startIndex, endIndex);
 
     $tableBody.html(countriesToDisplay.map((country, index) => `
-        <tr data-country-index="${startIndex + index}">
+        <tr data-country-index="${startIndex + index}" data-alpha3code="${country.alpha3Code}">
             <td>${country.name}</td>
             <td>${country.capital}</td>
             <td>${country.continent}</td>
@@ -52,8 +52,8 @@ $nextButton.on("click", () => {
 
 // Event listener pour afficher les détails d'un pays
 $tableBody.on("click", "tr",  function (event) {
-    const countryIndex = $(this).data("country-index");
-    const country = all_countries[countryIndex];
+    const countryIndex = $(this).data("alpha3code");
+    const country = Country.getCountryByAlpha3Code(countryIndex);
 
     // Si le clic est sur le drapeau, afficher le drapeau en grand
     if ($(event.target).hasClass("img-drapeau")) {

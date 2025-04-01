@@ -62,7 +62,7 @@ function renderTable() {
     const countriesToDisplay = filteredCountries.slice(startIndex, endIndex);
 
     $tableBody.html(countriesToDisplay.map((country, index) => `
-        <tr data-country-index="${startIndex + index}">
+        <tr data-country-index="${startIndex + index}" data-alpha3code="${country.alpha3Code}">
             <td>${country.name}</td>
             <td>${country.capital}</td>
             <td>${country.continent}</td>
@@ -115,8 +115,8 @@ $nextButton.on("click", () => {
 
 // Event listener pour afficher les détails d'un pays
 $tableBody.on("click", "tr",  function (event) {
-    const countryIndex = $(this).data("country-index");
-    const country = all_countries[countryIndex];
+    const countryIndex = $(this).data("alpha3code");
+    const country = Country.getCountryByAlpha3Code(countryIndex);
 
     // Si le clic est sur le drapeau, afficher le drapeau en grand
     if ($(event.target).hasClass("img-drapeau")) {
@@ -134,10 +134,17 @@ $tableBody.on("click", "tr",  function (event) {
         <div class="details-content">
             <div class="details-info">
                 <h2>${country.name}</h2>
-                <p><strong>Capitale:</strong> ${country.capital}</p>
+                <p><strong>Code alpha-3:</strong> ${country.alpha3Code}</p>
+                <p><strong>Capitale:</strong> ${country.capital ? country.capital : "Aucune capitale"}</p>
+                <p><strong>Nom des habitants:</strong> ${country.demonym}</p>
                 <p><strong>Région:</strong> ${country.continent}</p>
                 <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
                 <p><strong>Superficie:</strong> ${country.area} km²</p>
+                <p><strong>Densité de population:</strong> ${country.getPopDensity()}  hab/km²</p>
+                <p><strong>Frontières:</strong> ${country.getCountryNameBorder()} </p>
+                <p><strong>Langues:</strong> ${country.languages.map(language => language.name).join(", ")}</p>
+                <p><strong>Devise:</strong> ${country.currencies ? country.currencies.map(currency => currency.name).join(", ") : "Aucune monnaie"}</p>
+                <p><strong>Domaine de premier niveau:</strong> ${country.getTLDsNames()}</p>
             </div>
             <div class="details-flag">
                 <img src="${country.flag}" alt="Drapeau de ${country.name}" class="img-drapeau-details">
