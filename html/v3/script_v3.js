@@ -25,7 +25,7 @@ function renderTable() {
             <td>${country.capital}</td>
             <td>${country.continent}</td>
             <td>${country.population.toLocaleString()}</td>
-            <td>${country.area}</td>
+            <td>${country.area > 0 ? `${country.area}` : "Inconnue"}</td>
             <td><img src="${country.flag}" alt="Drapeau de ${country.name}" class="img-drapeau"></td>
         </tr>
     `).join(''));
@@ -76,8 +76,8 @@ $tableBody.on("click", "tr",  function (event) {
                 <p><strong>Nom des habitants:</strong> ${country.demonym}</p>
                 <p><strong>Région:</strong> ${country.continent}</p>
                 <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
-                <p><strong>Superficie:</strong> ${country.area} km²</p>
-                <p><strong>Densité de population:</strong> ${country.getPopDensity()}  hab/km²</p>
+                <p><strong>Superficie:</strong> ${country.area > 0 ? `${country.area} km²` : "Inconnue"}</p>
+                <p><strong>Densité de population:</strong> ${country.area > 0 ? `${country.getPopDensity()} hab/km²` : "Inconnue"}</p>
                 <p><strong>Frontières:</strong> ${country.getCountryNameBorder()} </p>
                 <p><strong>Langues:</strong> ${country.languages.map(language => language.name).join(", ")}</p>
                 <p><strong>Devise:</strong> ${country.currencies ? country.currencies.map(currency => currency.name).join(", ") : "Aucune monnaie"}</p>
