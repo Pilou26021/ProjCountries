@@ -64,7 +64,7 @@ function renderTable() {
     $tableBody.html(countriesToDisplay.map((country, index) => `
         <tr data-country-index="${startIndex + index}" data-alpha3code="${country.alpha3Code}">
             <td>${country.name}</td>
-            <td>${country.capital}</td>
+            <td>${country.capital ? country.capital : "Aucune capitale"}</td>
             <td>${country.continent}</td>
             <td>${country.population.toLocaleString()}</td>
             <td>${country.area > 0 ? `${country.area}` : "Inconnue"}</td>
@@ -73,8 +73,14 @@ function renderTable() {
     `).join(''));
 
     // on change la visibilité des boutons 
-    $prevButton.css("display", currentPage > 1 ? "inline-block" : "none");
-    $nextButton.css("display", endIndex < filteredCountries.length ? "inline-block" : "none");
+    $prevButton.css({
+        "visibility": currentPage > 1 ? "visible" : "hidden",
+        "display": "inline-block"
+    });
+    $nextButton.css({
+        "visibility": endIndex < filteredCountries.length ? "visible" : "hidden",
+        "display": "inline-block"
+    });
 }
 
 // Filtrage des données selon les critères sélectionnés
@@ -184,6 +190,20 @@ $flagModalClose.on("click", () => {
 });
 
 $flagModal.hide();
+
+function updateCurrentPageDisplay() {
+    $(".current-page").text(`Page ${currentPage}`);
+}
+
+renderTable = (function(originalRenderTable) {
+    return function() {
+        originalRenderTable.apply(this, arguments);
+        updateCurrentPageDisplay();
+    };
+})(renderTable);
+
+// Initialiser l'affichage de la page actuelle
+updateCurrentPageDisplay();
 
 // Initialiser les filtres et rendre la table
 populateFilters();

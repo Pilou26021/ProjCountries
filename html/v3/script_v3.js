@@ -22,7 +22,7 @@ function renderTable() {
     $tableBody.html(countriesToDisplay.map((country, index) => `
         <tr data-country-index="${startIndex + index}" data-alpha3code="${country.alpha3Code}">
             <td>${country.name}</td>
-            <td>${country.capital}</td>
+            <td>${country.capital ? country.capital : "Aucune capitale"}</td>
             <td>${country.continent}</td>
             <td>${country.population.toLocaleString()}</td>
             <td>${country.area > 0 ? `${country.area}` : "Inconnue"}</td>
@@ -121,6 +121,17 @@ $flagModalClose.on("click", () => {
 });
 
 $flagModal.hide();
+
+function updateCurrentPageDisplay() {
+    $(".current-page").text(`Page ${currentPage}`);
+}
+
+renderTable = (function(originalRenderTable) {
+    return function() {
+        originalRenderTable.apply(this, arguments);
+        updateCurrentPageDisplay();
+    };
+})(renderTable);
 
 // Render du DOM
 renderTable();
