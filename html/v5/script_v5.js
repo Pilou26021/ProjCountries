@@ -64,7 +64,7 @@ function renderTable() {
     $tableBody.html(countriesToDisplay.map((country, index) => `
         <tr data-country-index="${startIndex + index}" data-alpha3code="${country.alpha3Code}">
             <td>${country.name}</td>
-            <td>${country.capital}</td>
+            <td>${country.capital ? country.capital : "Aucune capitale"}</td>
             <td>${country.continent}</td>
             <td>${country.population.toLocaleString()}</td>
             <td>${country.area > 0 ? `${country.area}` : "Inconnue"}</td>
@@ -189,6 +189,7 @@ $flagModal.hide();
 populateFilters();
 renderTable();
 
+// Ajouter un tri sur les colonnes du tableau
 document.addEventListener("DOMContentLoaded", () => {
     const table = document.querySelector("table");
     let sortColumn = null;
@@ -204,10 +205,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 table.querySelectorAll("th").forEach(header => header.classList.remove("sorted"));
                 th.classList.add("sorted");
 
-                // Sort the filteredCountries array
+                // Trier le tableau filteredCountries
                 filteredCountries.sort((a, b) => {
-                    const valueA = a[column];
-                    const valueB = b[column];
+                    let valueA = a[column];
+                    let valueB = b[column];
+
+                    // Gérer le tri pour la colonne "capital"
+                    if (column === "capital") {
+                        valueA = valueA || ""; // Remplacer les valeurs nulles ou undefined par une chaîne vide
+                        valueB = valueB || "";
+                    }
 
                     if (typeof valueA === "number" && typeof valueB === "number") {
                         return (valueA - valueB) * sortOrder;
@@ -215,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     return valueA.toString().localeCompare(valueB.toString()) * sortOrder;
                 });
 
-                // Reset to the first page and re-render the table
+                // Revenir à la première page et re-render le tableau
                 currentPage = 1;
                 renderTable();
             }
