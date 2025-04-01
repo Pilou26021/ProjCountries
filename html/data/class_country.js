@@ -22,7 +22,7 @@ class Country {
             if (countries[i].area === undefined) {
                 countries[i].area = 0;
             }
-            const country = new Country(countries[i].alpha3Code, countries[i].name, countries[i].capital, countries[i].region, countries[i].population, countries[i].area, countries[i].borders, countries[i].demonym, countries[i].currencies, countries[i].languages, countries[i].topLevelDomain, countries[i].flags.svg, countries[i].translations);
+            const country = new Country(countries[i].alpha3Code, countries[i].translations.fr, countries[i].capital, countries[i].region, countries[i].population, countries[i].area, countries[i].borders, countries[i].demonym, countries[i].currencies, countries[i].languages, countries[i].topLevelDomain, countries[i].flags.svg, countries[i].translations);
             Country.all_countries.push(country);
         }
     }
