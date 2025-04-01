@@ -1,24 +1,39 @@
+// On récupère le tableau d'Objets pays
 const all_countries = Country.all_countries;;
-let filteredCountries = all_countries;
-const $tableBody = $("#countries-table tbody");
-const $prevButton = $("#prev-button");
-const $nextButton = $("#next-button");
-const $detailsZone = $("#details-zone");
-const $detailsCloseButton = $("#details-close-button");
-const $flagModal = $("#flag-modal");
-const $flagModalImg = $("#flag-modal img");
-const $flagModalClose = $("#flag-modal-close");
 
-let currentPage = 1;
-const itemsPerPage = 25;
+// On initialise le tableau des pays filtrés
+let filteredCountries = all_countries;
+
+// On récup les éléments importants du DOM
+const $tableBody = $("#countries-table tbody"); // Corps du tableau des pays
+const $prevButton = $("#prev-button"); // Bouton pour aller à la page précédente
+const $nextButton = $("#next-button"); // Bouton pour aller à la page suivante
+const $detailsZone = $("#details-zone"); // Zone d'affichage des détails d'un pays
+const $detailsCloseButton = $("#details-close-button"); // Bouton pour fermer la zone de détails
+const $flagModal = $("#flag-modal"); // Modale pour afficher le drapeau en grand
+const $flagModalImg = $("#flag-modal img"); // Image du drapeau dans la modale
+const $flagModalClose = $("#flag-modal-close"); // Bouton pour fermer la modale du drapeau
+
+let currentPage = 1; //page courante
+const itemsPerPage = 25; // Nombre d'éléments par page
 
 // Populer les filtres dynamiquement
 function populateFilters() {
-    const continents = [...new Set(all_countries.map(c => c.region))].sort();
+    const continents = new Set();
     const allLanguages = new Set();
-    
+
+    // Récupérer tous les continents
+    all_countries.forEach(country => {
+        if (country.continent) {
+            //si il n'est pas déjà dans le set
+            if (!continents.has(country.continent)) {
+                continents.add(country.continent);
+            }
+        }
+    });
+     
     // Récupérer toutes les langues et les ajouter dans un Set pour éviter les doublons
-    Country.all_countries.forEach(country => {
+    all_countries.forEach(country => {
         country.getLanguages().forEach(lang => allLanguages.add(lang));
     });
 
@@ -33,7 +48,11 @@ function populateFilters() {
     `).join(''));
 
     // Ajouter les continents dans le filtre
-    $("#continent-filter").append(continents.map(continent => `<option value="${continent}">${continent}</option>`));
+    $("#continent-filter").html(`
+        <option value="">Tous les continents</option>
+    ` + [...continents].map(continent => `
+        <option value="${continent}">${continent}</option>
+    `).join(''));
 }
 
 // Fonction pour rendre la table
@@ -65,7 +84,7 @@ function filterCountries() {
     const searchText = $("#country-filter").val().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
     filteredCountries = all_countries.filter(country => {
-        const matchesContinent = !selectedContinent || country.region.toLowerCase() === selectedContinent;
+        const matchesContinent = !selectedContinent || country.continent.toLowerCase() === selectedContinent;
         const matchesLanguage = !selectedLanguage || country.languages?.map(lang => lang.name.toLowerCase()).includes(selectedLanguage);
         const matchesName = !searchText || country.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(searchText) ||
             country.translations["fr"].toLowerCase().includes(searchText);
@@ -116,7 +135,7 @@ $tableBody.on("click", "tr",  function (event) {
             <div class="details-info">
                 <h2>${country.name}</h2>
                 <p><strong>Capitale:</strong> ${country.capital}</p>
-                <p><strong>Région:</strong> ${country.region}</p>
+                <p><strong>Région:</strong> ${country.continent}</p>
                 <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
                 <p><strong>Superficie:</strong> ${country.area} km²</p>
             </div>

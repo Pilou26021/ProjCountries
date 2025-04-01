@@ -1,3 +1,4 @@
+// On récupère le tableau d'Objets pays
 const all_countries = Country.all_countries;
 
 const $tableBody = $("#countries-table tbody");
