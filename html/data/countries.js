@@ -6589,7 +6589,6 @@ const countries = [
          "it": "Guyana francese",
          "hu": "Francia Guyana"
       },
-      "area": 83534.0,
       "flag": "https://flagcdn.com/gf.svg",
       "regionalBlocs": [
          {
