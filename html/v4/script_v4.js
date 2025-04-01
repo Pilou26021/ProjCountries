@@ -6,8 +6,8 @@ let filteredCountries = all_countries;
 
 // On récup les éléments importants du DOM
 const $tableBody = $("#countries-table tbody"); // Corps du tableau des pays
-const $prevButton = $("#prev-button"); // Bouton pour aller à la page précédente
-const $nextButton = $("#next-button"); // Bouton pour aller à la page suivante
+const $prevButton = $(".prev-button"); // Bouton pour aller à la page précédente
+const $nextButton = $(".next-button"); // Bouton pour aller à la page suivante
 const $detailsZone = $("#details-zone"); // Zone d'affichage des détails d'un pays
 const $detailsCloseButton = $("#details-close-button"); // Bouton pour fermer la zone de détails
 const $flagModal = $("#flag-modal"); // Modale pour afficher le drapeau en grand

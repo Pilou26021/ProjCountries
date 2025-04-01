@@ -6,8 +6,8 @@ let filteredCountries = all_countries;
 
 // On récup les éléments importants du DOM
 const $tableBody = $("#countries-table tbody"); // Corps du tableau des pays
-const $prevButton = $("#prev-button"); // Bouton pour aller à la page précédente
-const $nextButton = $("#next-button"); // Bouton pour aller à la page suivante
+const $prevButton = $(".prev-button"); // Bouton pour aller à la page précédente
+const $nextButton = $(".next-button"); // Bouton pour aller à la page suivante
 const $detailsZone = $("#details-zone"); // Zone d'affichage des détails d'un pays
 const $detailsCloseButton = $("#details-close-button"); // Bouton pour fermer la zone de détails
 const $flagModal = $("#flag-modal"); // Modale pour afficher le drapeau en grand
@@ -66,15 +66,21 @@ function renderTable() {
             <td>${country.name}</td>
             <td>${country.capital ? country.capital : "Aucune capitale"}</td>
             <td>${country.continent}</td>
-            <td>${country.population.toLocaleString()}</td>
-            <td>${country.area > 0 ? `${country.area}` : "Inconnue"}</td>
+            <td>${country.population.toLocaleString()} hab</td>
+            <td>${country.area > 0 ? `${country.area} km²` : "Inconnue"}</td>
             <td><img src="${country.flag}" alt="Drapeau de ${country.name}" class="img-drapeau"></td>
         </tr>
     `).join(''));
 
     // on change la visibilité des boutons 
-    $prevButton.css("display", currentPage > 1 ? "inline-block" : "none");
-    $nextButton.css("display", endIndex < filteredCountries.length ? "inline-block" : "none");
+    $prevButton.css({
+        "visibility": currentPage > 1 ? "visible" : "hidden",
+        "display": "inline-block"
+    });
+    $nextButton.css({
+        "visibility": endIndex < filteredCountries.length ? "visible" : "hidden",
+        "display": "inline-block"
+    });
 }
 
 // Filtrage des données selon les critères sélectionnés
@@ -185,9 +191,24 @@ $flagModalClose.on("click", () => {
 
 $flagModal.hide();
 
+function updateCurrentPageDisplay() {
+    $(".current-page").text(`Page ${currentPage}`);
+}
+
+renderTable = (function(originalRenderTable) {
+    return function() {
+        originalRenderTable.apply(this, arguments);
+        updateCurrentPageDisplay();
+    };
+})(renderTable);
+
+// Initialiser l'affichage de la page actuelle
+updateCurrentPageDisplay();
+
 // Initialiser les filtres et rendre la table
 populateFilters();
 renderTable();
+
 
 // Ajouter un tri sur les colonnes du tableau
 document.addEventListener("DOMContentLoaded", () => {
