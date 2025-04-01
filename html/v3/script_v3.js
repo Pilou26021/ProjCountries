@@ -77,7 +77,7 @@ $tableBody.on("click", "tr",  function (event) {
                 <p><strong>Région:</strong> ${country.continent}</p>
                 <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
                 <p><strong>Superficie:</strong> ${country.area > 0 ? `${country.area} km²` : "Inconnue"}</p>
-                <p><strong>Densité de population:</strong> ${country.area > 0 ? `${country.getPopDensity()} hab/km²` : "Inconnue"}</p>
+                <p><strong>Densité de population:</strong> ${country.area > 0 ? `${country.getPopDensity().toFixed(2)} hab/km²` : "Inconnue"}</p>
                 <p><strong>Frontières:</strong> ${country.getCountryNameBorder()} </p>
                 <p><strong>Langues:</strong> ${country.languages.map(language => language.name).join(", ")}</p>
                 <p><strong>Devise:</strong> ${country.currencies ? country.currencies.map(currency => currency.name).join(", ") : "Aucune monnaie"}</p>
