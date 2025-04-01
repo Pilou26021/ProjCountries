@@ -1,4 +1,4 @@
-const all_countries = countries;
+const all_countries = Country.all_countries;;
 let filteredCountries = all_countries;
 const $tableBody = $("#countries-table tbody");
 const $prevButton = $("#prev-button");
@@ -46,7 +46,7 @@ function renderTable() {
         <tr data-country-index="${startIndex + index}">
             <td>${country.name}</td>
             <td>${country.capital}</td>
-            <td>${country.region}</td>
+            <td>${country.continent}</td>
             <td>${country.population.toLocaleString()}</td>
             <td>${country.area}</td>
             <td><img src="${country.flag}" alt="Drapeau de ${country.name}" class="img-drapeau"></td>

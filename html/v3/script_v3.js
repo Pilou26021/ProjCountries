@@ -1,4 +1,4 @@
-const all_countries = countries;
+const all_countries = Country.all_countries;;
 const $tableBody = $("#countries-table tbody");
 const $prevButton = $("#prev-button");
 const $nextButton = $("#next-button");
@@ -20,7 +20,7 @@ function renderTable() {
         <tr data-country-index="${startIndex + index}">
             <td>${country.name}</td>
             <td>${country.capital}</td>
-            <td>${country.region}</td>
+            <td>${country.continent}</td>
             <td>${country.population.toLocaleString()}</td>
             <td>${country.area}</td>
             <td><img src="${country.flag}" alt="Drapeau de ${country.name}" class="img-drapeau"></td>
@@ -69,7 +69,7 @@ $tableBody.on("click", "tr",  function (event) {
             <div class="details-info">
                 <h2>${country.name}</h2>
                 <p><strong>Capitale:</strong> ${country.capital}</p>
-                <p><strong>Région:</strong> ${country.region}</p>
+                <p><strong>Région:</strong> ${country.continent}</p>
                 <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
                 <p><strong>Superficie:</strong> ${country.area} km²</p>
             </div>
