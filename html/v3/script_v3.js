@@ -1,15 +1,18 @@
+// On récupère le tableau d'Objets pays
 const all_countries = Country.all_countries;;
-const $tableBody = $("#countries-table tbody");
-const $prevButton = $("#prev-button");
-const $nextButton = $("#next-button");
-const $detailsZone = $("#details-zone");
-const $detailsCloseButton = $("#details-close-button");
-const $flagModal = $("#flag-modal");
-const $flagModalImg = $("#flag-modal img");
-const $flagModalClose = $("#flag-modal-close");
 
-let currentPage = 1;
-const itemsPerPage = 25;
+// On récup les éléments importants du DOM
+const $tableBody = $("#countries-table tbody"); // Corps du tableau des pays
+const $prevButton = $("#prev-button"); // Bouton pour aller à la page précédente
+const $nextButton = $("#next-button"); // Bouton pour aller à la page suivante
+const $detailsZone = $("#details-zone"); // Zone d'affichage des détails d'un pays
+const $detailsCloseButton = $("#details-close-button"); // Bouton pour fermer la zone de détails
+const $flagModal = $("#flag-modal"); // Modale pour afficher le drapeau en grand
+const $flagModalImg = $("#flag-modal img"); // Image du drapeau dans la modale
+const $flagModalClose = $("#flag-modal-close"); // Bouton pour fermer la modale du drapeau
+
+let currentPage = 1; //page courante
+const itemsPerPage = 25; // Nombre d'éléments par page
 
 function renderTable() {
     const startIndex = (currentPage - 1) * itemsPerPage;

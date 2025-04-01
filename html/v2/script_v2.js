@@ -1,10 +1,13 @@
+// On récupère le tableau d'Objets pays
 const all_countries = Country.all_countries;
-const $tableBody = $("#countries-table tbody");
-const $prevButton = $("#prev-button");
-const $nextButton = $("#next-button");
 
-let currentPage = 1;
-const itemsPerPage = 25;
+// On récup les éléments importants du DOM
+const $tableBody = $("#countries-table tbody"); // Corps du tableau des pays
+const $prevButton = $("#prev-button"); // Bouton pour aller à la page précédente
+const $nextButton = $("#next-button"); // Bouton pour aller à la page suivante
+
+let currentPage = 1; //page courante
+const itemsPerPage = 25; // Nombre d'éléments par page
 
 function renderTable() {
     const startIndex = (currentPage - 1) * itemsPerPage;
