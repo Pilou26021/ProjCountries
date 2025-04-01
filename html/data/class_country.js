@@ -19,6 +19,9 @@ class Country {
 
     static fill_countries(countries) {
         for (let i = 0; i < countries.length; i++) {
+            if (countries[i].area === undefined) {
+                countries[i].area = 0;
+            }
             const country = new Country(countries[i].alpha3Code, countries[i].name, countries[i].capital, countries[i].region, countries[i].population, countries[i].area, countries[i].borders, countries[i].demonym, countries[i].currencies, countries[i].languages, countries[i].topLevelDomain, countries[i].flags.svg, countries[i].translations);
             Country.all_countries.push(country);
         }
@@ -45,6 +48,9 @@ class Country {
     }
 
     getPopDensity() {
+        if (this.area === 0) {
+            return 0;
+        }
         return this.population / this.area;
     }
 
