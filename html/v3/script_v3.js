@@ -68,10 +68,17 @@ $tableBody.on("click", "tr",  function (event) {
         <div class="details-content">
             <div class="details-info">
                 <h2>${country.name}</h2>
+                <p><strong>Code alpha-3:</strong> ${country.alpha3Code}</p>
                 <p><strong>Capitale:</strong> ${country.capital}</p>
+                <p><strong>Nom des habitants:</strong> ${country.demonym}</p>
                 <p><strong>Région:</strong> ${country.continent}</p>
                 <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
                 <p><strong>Superficie:</strong> ${country.area} km²</p>
+                <p><strong>Densité de population:</strong>  hab/km²</p>
+                <p><strong>Frontières:</strong>    </p>
+                <p><strong>Langues:</strong> ${country.languages.map(language => language.name).join(", ")}</p>
+                <p><strong>Devise:</strong> ${country.currencies.map(currency => currency.name).join(", ")}</p>
+                <p><strong>Domaine de premier niveau:</strong> ${country.topLevelDomain}</p>
             </div>
             <div class="details-flag">
                 <img src="${country.flag}" alt="Drapeau de ${country.name}" class="img-drapeau-details">
@@ -83,6 +90,13 @@ $tableBody.on("click", "tr",  function (event) {
     $detailsZone.find(".close-details-button").on("click", () => {
         $detailsZone.hide();
     });
+
+    $detailsZone.find(".img-drapeau-details").on("click", function () {
+        $flagModalImg.attr("src", $(this).attr("src"));
+        $flagModalImg.attr("alt", $(this).attr("alt"));
+        $flagModal.show();
+    }
+    );
     
     $detailsZone.show();
 });
