@@ -30,10 +30,15 @@ class Country {
 
     getCountryNameBorder() {
         const countries = [];
-        for (let i = 0; i < this.borders.length; i++) {
-            const country = Country.getCountryByAlpha3Code(this.borders[i]);
-            if (country) {
-                countries.push(country.name);
+        if (this.borders === undefined || this.borders.length === 0) {
+            return 'Aucun pays frontalier';
+        }
+        else {
+            for (let i = 0; i < this.borders.length; i++) {
+                const country = Country.getCountryByAlpha3Code(this.borders[i]);
+                if (country) {
+                    countries.push(' ' + country.name );
+                }
             }
         }
         return countries;
@@ -65,6 +70,12 @@ class Country {
                 return countries[i].translations.fr;
             }
         }
+    }
+
+    getTLDsNames() {
+        return this.topLevelDomains.map(tld => {
+            return tld;
+        });
     }
 
     toString() {

@@ -69,7 +69,7 @@ $tableBody.on("click", "tr",  function (event) {
             <div class="details-info">
                 <h2>${country.name}</h2>
                 <p><strong>Code alpha-3:</strong> ${country.alpha3Code}</p>
-                <p><strong>Capitale:</strong> ${country.capital}</p>
+                <p><strong>Capitale:</strong> ${country.capital ? country.capital : "Aucune capitale"}</p>
                 <p><strong>Nom des habitants:</strong> ${country.demonym}</p>
                 <p><strong>Région:</strong> ${country.continent}</p>
                 <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
@@ -77,8 +77,8 @@ $tableBody.on("click", "tr",  function (event) {
                 <p><strong>Densité de population:</strong> ${country.getPopDensity()}  hab/km²</p>
                 <p><strong>Frontières:</strong> ${country.getCountryNameBorder()} </p>
                 <p><strong>Langues:</strong> ${country.languages.map(language => language.name).join(", ")}</p>
-                <p><strong>Devise:</strong> ${country.currencies.map(currency => currency.name).join(", ")}</p>
-                <p><strong>Domaine de premier niveau:</strong> ${country.topLevelDomain}</p>
+                <p><strong>Devise:</strong> ${country.currencies ? country.currencies.map(currency => currency.name).join(", ") : "Aucune monnaie"}</p>
+                <p><strong>Domaine de premier niveau:</strong> ${country.getTLDsNames()}</p>
             </div>
             <div class="details-flag">
                 <img src="${country.flag}" alt="Drapeau de ${country.name}" class="img-drapeau-details">
