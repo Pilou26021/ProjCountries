@@ -28,6 +28,17 @@ class Country {
         return Country.all_countries.find(country => country.alpha3Code === alpha3Code);
     }
 
+    getCountryNameBorder() {
+        const countries = [];
+        for (let i = 0; i < this.borders.length; i++) {
+            const country = Country.getCountryByAlpha3Code(this.borders[i]);
+            if (country) {
+                countries.push(country.name);
+            }
+        }
+        return countries;
+    }
+
     getPopDensity() {
         return this.population / this.area;
     }
