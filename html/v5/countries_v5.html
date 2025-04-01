@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Pays</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .img-drapeau {
+            width: 50px;
+            cursor: pointer;
+        }
+
+        #details-zone {
+            display: none;
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            width: 40%;
+            transform: translateX(-50%);
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 1000;
+        }
+        #details-close-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #flag-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        #flag-modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        #flag-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .details-header {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .details-content{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .details-flag{
+            padding : 50px 50px 0px 0px;
+
+        }
+
+        .img-drapeau-details{
+            width: 200px;
+            cursor: pointer;
+            /*Ombrage autour du drapeau pour les drapeaux blancs*/
+            box-shadow: 0 0 10px 5px rgb(220, 220, 220);
+        }
+
+        .close-details-button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        .filter-container select, .filter-container input {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Liste des Pays</h1>
+
+    <!-- Zone de filtrage -->
+    <div class="filter-container">
+        <select id="continent-filter">
+            <option value="">Tous les continents</option>
+        </select>
+        <select id="language-filter">
+            <option value="">Toutes les langues</option>
+        </select>
+        <input type="text" id="country-filter" placeholder="Rechercher par nom">
+    </div>
+
+    <table id="countries-table">
+        <thead>
+            <tr>
+                <th data-column="name">Nom</th>
+                <th data-column="capital">Capitale</th>
+                <th data-column="continent">Continent</th>
+                <th data-column="population">Population</th>
+                <th data-column="area">Superficie</th>
+                <th>Drapeau</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div style="text-align: center; margin: 20px;">
+        <button id="prev-button">Précédent</button>
+        <button id="next-button">Suivant</button>
+    </div>
+    <div id="details-zone">
+        <button id="details-close-button">Fermer</button>
+    </div>
+    <div id="flag-modal" style="display: flex;">
+        <button id="flag-modal-close">Fermer</button>
+        <img src="" alt="Drapeau en grand">
+    </div>
+</table>
+    <script src="../data/countries.js"></script>
+    <script src="../data/class_country.js"></script>
+    <script src="../data/class_language.js"></script>
+    <script src="../data/class_currency.js"></script>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script src="script_v5.js"></script>
+</body>
+</html>
