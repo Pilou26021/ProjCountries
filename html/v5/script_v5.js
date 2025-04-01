@@ -144,7 +144,7 @@ $tableBody.on("click", "tr",  function (event) {
                 <p><strong>Capitale:</strong> ${country.capital ? country.capital : "Aucune capitale"}</p>
                 <p><strong>Nom des habitants:</strong> ${country.demonym}</p>
                 <p><strong>Région:</strong> ${country.continent}</p>
-                <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
+                <p><strong>Population:</strong> ${country.population.toLocaleString()} hab</p>
                 <p><strong>Superficie:</strong> ${country.area > 0 ? `${country.area} km²` : "Inconnue"}</p>
                 <p><strong>Densité de population:</strong> ${country.area > 0 ? `${country.getPopDensity().toFixed(2)} hab/km²` : "Inconnue"}</p>
                 <p><strong>Frontières:</strong> ${country.getCountryNameBorder()} </p>
